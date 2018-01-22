@@ -1,0 +1,120 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="__PUBLIC__/lib/html5shiv.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/lib/respond.min.js"></script>
+	<![endif]-->
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/h-ui/css/H-ui.min.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/h-ui.admin/css/H-ui.admin.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/lib/Hui-iconfont/1.0.8/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/h-ui.admin/skin/default/skin.css" id="skin" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/h-ui.admin/css/style.css" />
+	<!--[if IE 6]>
+	<script type="text/javascript" src="__PUBLIC__/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+	<script>DD_belatedPNG.fix('*');</script>
+	<![endif]-->
+	<title>令牌管理</title>
+</head>
+<body>
+<form id="form1" method="post">
+	<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 令牌管理 </a></nav>
+	<div class="page-container">
+		<div class="cl pd-5 bg-1 bk-gray mt-20">
+		<span class="l">
+		<a class="btn btn-primary radius" onclick="article_add('添加令牌','{:url('add')}')" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加令牌</a>
+		</span>
+		</div>
+		<div class="mt-20">
+			<table class="table table-border table-bordered table-bg table-hover table-sort table-responsive">
+				<thead>
+				<tr class="text-c">
+					<th>网站名称</th>
+					<th>网站url</th>
+					<th>appid</th>
+					<th>key</th>
+					<th width="60">操作</th>
+				</tr>
+				</thead>
+				<tbody>
+				{volist name="sms" id="s"}
+				<tr class="text-c">
+					<td>{$s.webname}</td>
+					<td>{$s.url}</td>
+					<td>{$s.appid}</td>
+					<td>{$s.key}</td>
+					<td class="f-14 td-manage"><a style="text-decoration:none" class="ml-5"  onClick="article_edit('令牌编辑','{$Think.config.cc_url}/cner/token/edit?id={$s.id}',{$s.id})" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a><a style="text-decoration:none" class="ml-5" onClick="article_del(this,{$s.id})" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+				</tr>
+				{/volist}
+				</tbody>
+			</table>
+			<div class="page_list">
+				<div class="pagination">
+					{$sms->render()}
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--_footer 作为公共模版分离出去-->
+	<script type="text/javascript" src="__PUBLIC__/lib/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/lib/layer/2.4/layer.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/static/h-ui/js/H-ui.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+
+	<!--请在下方写此页面业务相关的脚本-->
+	<script type="text/javascript" src="__PUBLIC__/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+
+	<script type="text/javascript" src="__PUBLIC__/lib/laypage/1.2/laypage.js"></script>
+	<script type="text/javascript">
+		function article_del(obj,id){
+			layer.confirm('确认要删除吗？',function(index){
+				$.ajax({
+					type: 'GET',
+					url: "{$Think.config.cc_url}/cner/token/delete?id="+id,
+					dataType: 'json',
+					success: function(data){
+						$(obj).parents("tr").remove();
+						layer.msg('已删除!',{icon:1,time:1000});
+					},
+					error:function(data) {
+						console.log(data.message);
+					},
+				});
+			});
+		}
+		/*资讯-添加*/
+		function article_add(title,url,w,h){
+			var index = layer.open({
+				type: 2,
+				title: title,
+				content: url
+			});
+			layer.full(index);
+		}
+		/*资讯-编辑*/
+		function article_edit(title,url,id,w,h){
+			var index = layer.open({
+				type: 2,
+				title: title,
+				content: url
+			});
+			layer.full(index);
+		}
+	</script>
+</form>
+</body>
+<style type="text/css">
+	.pagination{display:inline-block;padding-left:0;border-radius:4px;margin: 20px auto;}
+	.pagination li{display:inline}
+	.pagination li a,.pagination li span{position:relative;float:left;padding:6px 12px;line-height:1.42857143;color:#393D49;background:#fff;margin:0 0 0 8px;border:1px solid #eee}
+	.pagination li a:hover{color:#fff;background:#1E9FFF}
+	.pagination .active span{background:#1E9FFF;color:#fff}
+	.pagination .disabled{display:none}
+
+</style>
+</html>

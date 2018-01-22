@@ -128,7 +128,7 @@ $(function(){
 					content : res.message,
 					icon : 1,
 					yes : function(){
-						location.href=jump;
+						parent.location.href=jump;
 					},
 				});
 			}else if(res.status==0){

@@ -1,35 +1,36 @@
 <?php
 namespace app\cner\controller;
-use app\cner\model\Smsmess;
-class Mess extends Common{
+class Sign extends Common{
     public function index(){
-            $res=db('smsmess')->where('delete_time','eq',0)->paginate(10);
-            $this->assign('sms',$res);
-            return $this->fetch();
+        $res=db('sign')->where('delete_time','eq',0)->select();
+        $this->assign('sms',$res);
+        return $this->fetch();
     }
     public function add(){
         if(request()->isAjax()){
             $data=input('post.');
             $validate=validate('Validates');
-            if($validate->scene('addsmsmess')->check($data)){
-                $data['create_time']=time();
-                $res=db('smsmess')->insert($data);
+            if($validate->scene('addsign')->check($data)){
+                $res=db('sign')->insert($data);
                 if($res){
                     return show(1,'添加成功');
                 }else{
                     return show(0,'添加失败');
                 }
+            } else{
+                return show(0,$validate->getError());
             }
+        }else{
+            return $this->fetch();
         }
-        return $this->fetch();
     }
     public function edit(){
         if(request()->isAjax()){
-            $input=input('post.');
+            $data=input('post.');
             $id=input('get.id');
             $validate=validate('Validates');
-            if($validate->scene('addsmsmess')->check($input)){
-                $res=db('smsmess')->where('id',$id)->update($input);
+            if($validate->scene('addsign')->check($data)){
+                $res=db('sign')->where('id',$id)->update($data);
                 if($res){
                     return show(1,'修改成功');
                 }else{
@@ -38,16 +39,15 @@ class Mess extends Common{
             }else{
                 return show(0,$validate->getError());
             }
-        }else{
-            $id=input('get.id');
-            $res=db('smsmess')->where('id',$id)->find();
-            $this->assign('sms',$res);
-            return $this->fetch();
         }
+        $id=input('get.id');
+        $res=db('sign')->where('id',$id)->find();
+        $this->assign('s',$res);
+        return $this->fetch();
     }
     public function delete(){
         $id=input('get.id');
-        $res=Smsmess::destroy($id);
+        $res=db('sign')->where('id',$id)->update(['delete_time'=>time()]);
         if($res){
             return true;
         }else{

@@ -1,0 +1,234 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__PUBLIC__/lib/html5shiv.js"></script>
+<script type="text/javascript" src="__PUBLIC__/lib/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/h-ui.admin/css/style.css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="__PUBLIC__/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>我的桌面</title>
+</head>
+<body>
+<div class="page-container" style="padding-top:0px ">
+	<h2 style="border-bottom:#eaecef 1px solid">短信接口说明</h2>
+	<h5>入参列表(POST、GET)</h5>
+	<div class="mt-20">
+		<table class="table table-border table-bordered table-bg table-hover table-sort table-responsive">
+			<thead>
+			<tr class="text-c">
+				<th>参数名</th>
+				<th>参数类型</th>
+				<th>必填与否</th>
+				<th>样例取值</th>
+				<th width="15%">参数说明</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr class="text-c">
+				<td>num</td>
+				<td>String</td>
+				<td>必填</td>
+				<td>13000000000</td>
+				<td>短信接收号码。支持以逗号分隔的形式进行批量调用，批量上限为1000个手机号码,批量调用相对于单条调用及时性稍有延迟,验证码类型的短信推荐使用单条调用的方式</td>
+			</tr>
+			<tr class="text-c">
+				<td>key</td>
+				<td>String</td>
+				<td>必填</td>
+				<td>uynDKQ6pbNrCdtB</td>
+				<td>后台生成的Key</td>
+			</tr>
+			<tr class="text-c">
+				<td>url</td>
+				<td>String</td>
+				<td>必填</td>
+				<td>cnereate.xyz</td>
+				<td>key对应的网站url</td>
+			</tr>
+			<tr class="text-c">
+				<td>appid</td>
+				<td>String</td>
+				<td>必填</td>
+				<td>cdxy</td>
+				<td>Key对应的AppId</td>
+			</tr>
+			<tr class="text-c">
+				<td>token</td>
+				<td>String</td>
+				<td>必填</td>
+				<td>sdlwe1kl3j3i4i33k2l</td>
+				<td>采用拼接appid+appid的值+time+time的值+key+key的值成为字符串，把拼接后的字符串进行先MD5后sha1的加密方式生成</td>
+			</tr>
+			<tr class="text-c">
+				<td>time</td>
+				<td>String</td>
+				<td>必填</td>
+				<td>1500000000</td>
+				<td>当前时间戳</td>
+			</tr>
+			<tr class="text-c">
+				<td>sign</td>
+				<td>String</td>
+				<td>必填</td>
+				<td>信儿众创</td>
+				<td>短信签名</td>
+			</tr>
+			<tr class="text-c">
+				<td>TemplateCode</td>
+				<td>String</td>
+				<td>必填</td>
+				<td>SMS_110280059</td>
+				<td>模板code</td>
+			</tr>
+			<tr class="text-c">
+				<td>param</td>
+				<td>String</td>
+				<td>必填</td>
+				<td>{"num":"'18281602752'，验证码'674664'"}</td>
+				<td>短信模板变量替换JSON串,友情提示:如果JSON中需要带换行符,请参照标准的JSON协议对换行符的要求,比如短信内容中包含\r\n的情况在JSON中需要表示成\r\n,否则会导致JSON在服务端解析失败</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+	<h5>出参列表</h5>
+	<div class="mt-20">
+		<table class="table table-border table-bordered table-bg table-hover table-sort table-responsive">
+			<thead>
+			<tr class="text-c">
+				<th>参数名</th>
+				<th>参数类型</th>
+				<th>样例取值</th>
+				<th width="15%">参数说明</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr class="text-c">
+				<td>Message</td>
+				<td>String</td>
+				<td>OK</td>
+				<td>状态码的描述</td>
+			</tr>
+			<tr class="text-c">
+				<td>code</td>
+				<td>String</td>
+				<td>{"num":"'18281602752'，验证码'674664'"}</td>
+				<td>短信模板变量替换JSON串</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+	<h5>接口测试</h5>
+	<div class="page-container">
+	<form action="" method="post" class="form form-horizontal" id="form1">
+				<div class="row cl">
+					<label class="form-label col-xs-4 col-sm-2">
+						<span class="c-red">*</span>
+						手机号：</label>
+					<div class="formControls col-xs-8 col-sm-4">
+						<input type="text" class="input-text" value="" placeholder="" id="" name="num">
+					</div>
+					<div class="col-3">
+					</div>
+				</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">
+				<span class="c-red">*</span>
+				key：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<input type="text" class="input-text" value="" placeholder="" id="" name="key">
+			</div>
+			<div class="col-3">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">
+				<span class="c-red">*</span>
+				url：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<input type="text" class="input-text" value="" placeholder="" id="" name="url">
+			</div>
+			<div class="col-3">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">
+				<span class="c-red">*</span>
+				appid：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<input type="text" class="input-text" value="" placeholder="" id="" name="appid">
+			</div>
+			<div class="col-3">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">
+				<span class="c-red">*</span>
+				短信签名：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<input type="text" class="input-text" value="" placeholder="" id="" name="sign">
+			</div>
+			<div class="col-3">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">
+				<span class="c-red">*</span>
+				短信模板：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<input type="text" class="input-text" value="" placeholder="" id="" name="TemplateCode">
+			</div>
+			<div class="col-3">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">
+				<span class="c-red">*</span>
+				模板变量替换信息：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<input type="text" class="input-text" value="" placeholder="" id="" name="param">
+			</div>
+			<div class="col-3">
+			</div>
+		</div>
+		<div class="row cl">
+			<div class="col-9 col-offset-2">
+				<input class="btn btn-primary radius" type="button" id="btn" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+			</div>
+		</div>
+	</form>
+	</div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/static/h-ui/js/H-ui.min.js"></script>
+</body>
+<script>
+	$('#btn').click(function(){
+		var data=$('#form1').serializeArray();
+		var postData={};
+		$(data).each(function(i){
+			postData[this.name]=this.value;
+		});
+		var url="{$Think.config.cc_url}/cner/sends/test";
+		$.post(url,postData,function(res){
+			if(res.status==1){
+				alert(res.message);
+			}else if(res.status==0){
+				layer.msg(res.message);
+			}
+		},'JSON');
+	})
+</script>
+</html>

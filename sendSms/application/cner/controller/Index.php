@@ -1,7 +1,7 @@
 <?php
 namespace app\cner\controller;
 class Index extends Common{
-    public function index(){
+    public function index(){ 
         return $this->fetch();
     }
     public function welcome(){

@@ -51,12 +51,24 @@
 			<dt><i class="Hui-iconfont">&#xe616;</i> 短信验证码管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="{:url('Sends/index')}" data-title="短信验证码管理" href="javascript:void(0)">短信验证码列表</a></li>
-					<li><a data-href="{:url('Mess/index')}" data-title="短信信息设置" href="javascript:void(0)">短信信息设置</a></li>
+					<li><a data-href="{$Think.config.cc_url}/cner/sends/index" data-title="短信验证码管理" href="javascript:void(0)">短信验证码列表</a></li>
+					<li><a data-href="{$Think.config.cc_url}/cner/mess/index" data-title="短信信息设置" href="javascript:void(0)">短信信息设置</a></li>
+					<li><a data-href="{$Think.config.cc_url}/cner/sends/illustrate" data-title="短信接口说明" href="javascript:void(0)">短信接口说明</a></li>
 			    </ul>
 		    </dd>
 	    </dl>
     </div>
+	<div class="menu_dropdown bk_2">
+		<dl id="menu-passmess">
+			<dt><i class="Hui-iconfont">&#xe616;</i> 令牌签名管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a data-href="{$Think.config.cc_url}/cner/token/index" data-title="接口令牌" href="javascript:void(0)">接口令牌</a></li>
+					<li><a data-href="{$Think.config.cc_url}/cner/sign/index" data-title="签名管理" href="javascript:void(0)">签名管理</a></li>
+				</ul>
+			</dd>
+		</dl>
+	</div>
 </aside>
 <div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>
 <section class="Hui-article-box">

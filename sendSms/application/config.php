@@ -254,5 +254,6 @@ return [
         // 验证成功后是否重置
         'reset'    => true
     ],
-    'cc_url'  => '/cner/dc/sendSms/index.php'
+    'cc_url'  => '/cner/dc/sendSms/index.php',
+    'accessKeyId'=>'TZLDC123321',
 ];

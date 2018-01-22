@@ -35,9 +35,9 @@
 				<div class="row cl">
 					<label class="form-label col-xs-4 col-sm-2">
 						<span class="c-red">*</span>
-						模板Code：</label>
-					<div class="formControls col-xs-8 col-sm-6">
-						<input type="text" class="input-text" value="" placeholder="" id="" name="TemplateCode">
+						短信签名：</label>
+					<div class="formControls col-xs-8 col-sm-4">
+						<input type="text" class="input-text" value="" placeholder="" id="" name="Signame">
 					</div>
 					<div class="col-3">
 					</div>
@@ -45,10 +45,13 @@
 				<div class="row cl">
 					<label class="form-label col-xs-4 col-sm-2">
 						<span class="c-red">*</span>
-						模板内容：</label>
-					<div class="formControls col-xs-8 col-sm-6">
-						<textarea name="Content" cols="" rows="" class="textarea"  placeholder="变量格式：${code};  示例：您的验证码为：${code}，该验证码五分钟内有效" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="$.Huitextarealength(this,200)"></textarea>
-						<p class="textarea-numberbar"><em class="textarea-length">0</em>/300</p>
+						签名类型：</label>
+					<div class="formControls col-xs-8 col-sm-2">
+						<select name="type" class="select">
+							<option value="0">短信验证码</option>
+							<option value="1">短信通知</option>
+							<option value="2">推广短信</option>
+						</select>
 					</div>
 					<div class="col-3">
 					</div>
@@ -120,8 +123,8 @@ $(function(){
 		$(data).each(function(i){
 			postData[this.name]=this.value;
 		});
-		var url="{$Think.config.cc_url}/cner/mess/add";
-		var jump="{$Think.config.cc_url}/cner/mess";
+		var url="{$Think.config.cc_url}/cner/sign/add";
+		var jump="{$Think.config.cc_url}/cner/sign";
 		$.post(url,postData,function(res){
 			if(res.status==1){
 				layer.open({
